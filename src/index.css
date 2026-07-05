@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Outfit', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-dark-bg: #030712;
+  --color-dark-card: rgba(11, 15, 26, 0.65);
+  --color-cyan-glow: #22d3ee;
+  --color-violet-glow: #a78bfa;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* Reset default margins for full layout */
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #030712;
+  color: #f3f4f6;
+  overflow-x: hidden;
+}
+
+/* Custom animated cursor styling */
+.custom-cursor {
+  width: 10px;
+  height: 10px;
+  background-color: #22d3ee;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.custom-cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(34, 211, 238, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  transition: width 0.3s, height 0.3s, border-color 0.3s, transform 0.1s ease-out;
+}
+
+/* Glassmorphism panel styling */
+.glass-panel {
+  background: rgba(11, 15, 26, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(11, 15, 26, 0.7);
+  border-color: rgba(34, 211, 238, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.15), 
+              0 0 20px -5px rgba(167, 139, 250, 0.05);
+  transform: translateY(-4px);
+}
+
+/* Animations for background particles from Code.txt */
+@keyframes fade-frames {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes scale-frames {
+  0%, 100% {
+    transform: scale3d(0.4, 0.4, 1);
+  }
+  50% {
+    transform: scale3d(2.2, 2.2, 1);
+  }
+}
+
+.particle-glow {
+  animation: fade-frames 200ms infinite, scale-frames 2s infinite;
+}
+
+/* Hide default cursor on interactive screens */
+@media (min-width: 1024px) {
+  body, a, button, select, input, textarea, [role="button"] {
+    cursor: none;
+  }
+}
